@@ -27,7 +27,7 @@ export class FoodPageComponent {
 
   addToCart() {
     if(this.cartService.addToCart(this.food)) {
-      this.snackBar.open('Item already in your cart. You can modify quantity in your Cart page.', 'Close', {
+      this.snackBar.open(`You can modify the quantity in "My Cart" page.`, 'Close', {
         duration: 3000,
       });
     }
