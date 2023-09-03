@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { FoodService } from 'src/app/services/food.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from 'src/app/shared/models/Food';
@@ -14,6 +16,7 @@ export class FoodPageComponent {
   constructor(activatedRoute: ActivatedRoute, 
     foodService: FoodService, 
     private cartService: CartService,
+    private snackBar: MatSnackBar,
     private router: Router) {
     activatedRoute.params.subscribe(params => {
       if (params['id']) {
@@ -23,7 +26,11 @@ export class FoodPageComponent {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.food);
+    if(this.cartService.addToCart(this.food)) {
+      this.snackBar.open('Item already in your cart. You can modify quantity in your Cart page.', 'Close', {
+        duration: 3000,
+      });
+    }
     // this.router.navigateByUrl('/cart-page');
   }
 }

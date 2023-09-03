@@ -12,14 +12,15 @@ export class CartService {
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
   constructor() { }
 
-  addToCart(food:Food):void {
+  addToCart(food:Food):boolean {
     let cartItem = this.cart.items.find(item => item.food.id === food.id);
     if(cartItem) {
-      return;
+      return true;
     }
 
     this.cart.items.push(new CartItem(food));
     this.setCartToLocalStorage();
+    return false;
   }
 
   removeFromCart(foodId: string): void {
