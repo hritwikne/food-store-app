@@ -31,6 +31,11 @@ export class FoodPageComponent {
         duration: 3000,
       });
     }
+    else {
+      this.snackBar.open('Item added to your cart!', 'Close', {
+        duration: 3000,
+      });
+    }
     // this.router.navigateByUrl('/cart-page');
   }
 }
