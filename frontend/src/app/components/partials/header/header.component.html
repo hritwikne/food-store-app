@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <a routerLink="/" class="logo">Food Store</a> 
+        <a routerLink="/" class="logo">FS</a> 
         <nav>
             <ul>
                 <li>
@@ -16,7 +16,7 @@
                 </li>
                 <li>
                     <a routerLink="/cart-page">
-                        Cart <span>3</span>
+                        Cart <span *ngIf="cartQuantity"> {{cartQuantity}} </span>
                     </a>
                 </li>
             </ul>

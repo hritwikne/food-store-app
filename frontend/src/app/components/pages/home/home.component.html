@@ -1,4 +1,10 @@
 <app-search></app-search>
+<app-empty-page
+    [visible]="!foods || !foods.length"
+    emptyMessage="Nothing found"
+    resetLinkText="Reset">
+</app-empty-page>
+
 <ul>
     <li *ngFor="let food of foods">
         <a routerLink="/food/{{food.id}}">
